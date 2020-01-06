@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include<fstream>
 #define x 9                                      //如果用for迴圈 用變數j當x 變數i當y
 #define y 10
@@ -70,7 +70,7 @@ int main(int argc, char* argv[])
 		{
 			return 1;
 		}
-		else if (chesstable[2][9] != 12&&f_12.chess!=0)            //如果裡面函數都沒有照著預期走 就寫防止犯規跟程式跑不動的情況
+		else if (chesstable[2][9] != 12 && f_12.chess != 0)            //如果裡面函數都沒有照著預期走 就寫防止犯規跟程式跑不動的情況
 		{
 			ofstream outfile;
 			outfile.open("play.txt");
@@ -94,7 +94,7 @@ int main(int argc, char* argv[])
 			outfile.close();
 			return 1;
 		}
-		else if (f_3.chess_x == 2 && f_3.chess_y == 0&&f_3.chess!=0)
+		else if (f_3.chess_x == 2 && f_3.chess_y == 0 && f_3.chess != 0)
 		{
 			if (chesstable[1][1] == -1)
 			{
@@ -105,7 +105,7 @@ int main(int argc, char* argv[])
 				return 1;
 			}
 		}
-		else if (f_4.chess_x == 6 && f_4.chess_y == 0&&f_4.chess!=0)                  //用象拖時間(最後手段)
+		else if (f_4.chess_x == 6 && f_4.chess_y == 0 && f_4.chess != 0)                  //用象拖時間(最後手段)
 		{
 			if (chesstable[7][1] == -1)
 			{
@@ -116,7 +116,7 @@ int main(int argc, char* argv[])
 				return 1;
 			}
 		}
-		else if (f_3.chess_x == 0 && f_3.chess_y == 2&&f_3.chess!=0)
+		else if (f_3.chess_x == 0 && f_3.chess_y == 2 && f_3.chess != 0)
 		{
 			if (chesstable[1][1] == -1)
 			{
@@ -127,7 +127,7 @@ int main(int argc, char* argv[])
 				return 1;
 			}
 		}
-		else if (f_4.chess_x == 8 && f_4.chess_y == 2&&f_4.chess!=0)
+		else if (f_4.chess_x == 8 && f_4.chess_y == 2 && f_4.chess != 0)
 		{
 			if (chesstable[7][1] == -1)
 			{
@@ -145,7 +145,7 @@ int main(int argc, char* argv[])
 		{
 			return 1;
 		}
-		else if (chesstable[2][0] != 112&&s_112.chess!=0)
+		else if (chesstable[2][0] != 112 && s_112.chess != 0)
 		{
 			ofstream outfile;
 			outfile.open("play.txt");
@@ -169,7 +169,7 @@ int main(int argc, char* argv[])
 			outfile.close();
 			return 1;
 		}
-		else if (s_103.chess_x == 2 && s_103.chess_y == 9&&s_103.chess!=0)
+		else if (s_103.chess_x == 2 && s_103.chess_y == 9 && s_103.chess != 0)
 		{
 			if (chesstable[1][8] == -1)
 			{
@@ -180,7 +180,7 @@ int main(int argc, char* argv[])
 				return 1;
 			}
 		}
-		else if (s_104.chess_x == 6 && s_104.chess_y == 9&&s_104.chess!=0)                  //用象拖時間(最後手段)
+		else if (s_104.chess_x == 6 && s_104.chess_y == 9 && s_104.chess != 0)                  //用象拖時間(最後手段)
 		{
 			if (chesstable[7][8] == -1)
 			{
@@ -191,7 +191,7 @@ int main(int argc, char* argv[])
 				return 1;
 			}
 		}
-		else if (s_103.chess_x == 0 && s_103.chess_y == 7&&s_103.chess!=0)
+		else if (s_103.chess_x == 0 && s_103.chess_y == 7 && s_103.chess != 0)
 		{
 			if (chesstable[1][8] == -1)
 			{
@@ -202,7 +202,7 @@ int main(int argc, char* argv[])
 				return 1;
 			}
 		}
-		else if (s_104.chess_x == 8 && s_104.chess_y == 7&&s_104.chess!=0)
+		else if (s_104.chess_x == 8 && s_104.chess_y == 7 && s_104.chess != 0)
 		{
 			if (chesstable[7][8] == -1)
 			{
@@ -1392,9 +1392,9 @@ int f_9_attack(int chesstable[x][y], tablechess)
 	{
 		return -1;
 	}
-	if (chesstable[4][2] == -1&& chesstable[3][2] == -1&&chesstable[2][2] == -1)
+	if (chesstable[4][2] == -1 && chesstable[3][2] == -1 && chesstable[2][2] == -1)
 	{
-		if (f_9.chess_x==1&&f_9.chess_y==2)
+		if (f_9.chess_x == 1 && f_9.chess_y == 2)
 		{
 			ofstream outfile;
 			outfile.open("play.txt");
@@ -1405,7 +1405,7 @@ int f_9_attack(int chesstable[x][y], tablechess)
 	}
 	else if (f_9.chess_x == 1 && f_9.chess_y == 2)
 	{
-		if (chesstable[1][1]==-1)
+		if (chesstable[1][1] == -1)
 		{
 			ofstream outfile;
 			outfile.open("play.txt");
@@ -1416,7 +1416,7 @@ int f_9_attack(int chesstable[x][y], tablechess)
 	}
 	if (f_9.chess_x == 1 && f_9.chess_y == 2)
 	{
-		if (chesstable[2][1] == -1&& chesstable[3][1] == -1&& chesstable[4][1] == -1)
+		if (chesstable[2][1] == -1 && chesstable[3][1] == -1 && chesstable[4][1] == -1)
 		{
 			ofstream outfile;
 			outfile.open("play.txt");
@@ -1500,7 +1500,7 @@ int f_10_attack(int chesstable[x][y], tablechess)
 		outfile.close();
 		return 2;
 	}
-	else if(f_10.chess_x == 7 && f_10.chess_y == 2&&chesstable[6][2]==-1)
+	else if (f_10.chess_x == 7 && f_10.chess_y == 2 && chesstable[6][2] == -1)
 	{
 		ofstream outfile;
 		outfile.open("play.txt");
@@ -2001,7 +2001,7 @@ int f_6_attack(int chesstable[x][y], tablechess)
 			return 100;
 		}
 	}
-	if (chesstable[5][9] == -1 || chesstable[5][9] == 100)
+	if (chesstable[5][9] == -1 || chesstable[5][9] == 100 || chesstable[5][8] == 100)
 	{
 		if (chesstable[5][1] == -1 || chesstable[5][1] == 105 || chesstable[5][1] == 106 || chesstable[5][1] == 107 || chesstable[5][1] == 108 || chesstable[5][1] == 109 || chesstable[5][1] == 110)
 		{
@@ -2015,7 +2015,7 @@ int f_6_attack(int chesstable[x][y], tablechess)
 			}
 		}
 	}
-	if (chesstable[3][9] == -1 || chesstable[3][9] == 100)
+	if (chesstable[3][9] == -1 || chesstable[3][9] == 100 || chesstable[3][8] == 100)
 	{
 		if (chesstable[4][1] == -1 && chesstable[5][1] == -1 && chesstable[6][1] == -1 && chesstable[7][1] == -1)
 		{
@@ -3105,7 +3105,7 @@ int s_110_attack(int chesstable[x][y], tablechess)
 	}
 	if (chesstable[5][4] == -1 && chesstable[4][4] == -1 && chesstable[4][3] != 13)
 	{
-		if (s_110.chess_x==7&&s_110.chess_y==4)
+		if (s_110.chess_x == 7 && s_110.chess_y == 4)
 		{
 			ofstream outfile;
 			outfile.open("play.txt");
@@ -3114,7 +3114,7 @@ int s_110_attack(int chesstable[x][y], tablechess)
 			return 3;
 		}
 	}
-	else if(s_110.chess_x==4&&s_110.chess_y==4)
+	else if (s_110.chess_x == 4 && s_110.chess_y == 4)
 	{
 		ofstream outfile;
 		outfile.open("play.txt");
@@ -3122,7 +3122,7 @@ int s_110_attack(int chesstable[x][y], tablechess)
 		outfile.close();
 		return 3;
 	}
-	if (chesstable[5][5] == -1&& s_110.chess_x == 5 && s_110.chess_y == 4)
+	if (chesstable[5][5] == -1 && s_110.chess_x == 5 && s_110.chess_y == 4)
 	{
 		ofstream outfile;
 		outfile.open("play.txt");
@@ -3602,7 +3602,7 @@ int s_106_attack(int chesstable[x][y], tablechess)
 			return 100;
 		}
 	}
-	if (chesstable[5][0] == -1 || chesstable[5][0] == 0)
+	if (chesstable[5][0] == -1 || chesstable[5][0] == 0 || chesstable[5][1] == 0)
 	{
 		if (chesstable[5][8] == -1 || chesstable[5][8] == 5 || chesstable[5][8] == 6 || chesstable[5][8] == 7 || chesstable[5][8] == 8 || chesstable[5][8] == 9 || chesstable[5][8] == 10)
 		{
@@ -3616,7 +3616,7 @@ int s_106_attack(int chesstable[x][y], tablechess)
 			}
 		}
 	}
-	if (chesstable[3][0] == -1 || chesstable[3][0] == 0)
+	if (chesstable[3][0] == -1 || chesstable[3][0] == 0 || chesstable[3][1] == 0)
 	{
 		if (chesstable[4][8] == -1 && chesstable[5][8] == -1 && chesstable[6][8] == -1 && chesstable[7][8] == -1)
 		{
