@@ -1818,7 +1818,7 @@ int f_0_defend(int chesstable[x][y], tablechess)
 	}
 	if (chesstable[f_0.chess_x][f_0.chess_y + 1] == 5 || chesstable[f_0.chess_x][f_0.chess_y + 1] == 6 || chesstable[f_0.chess_x][f_0.chess_y + 1] == 7 || chesstable[f_0.chess_x][f_0.chess_y + 1] == 8 || chesstable[f_0.chess_x][f_0.chess_y + 1] == 9 || chesstable[f_0.chess_x][f_0.chess_y + 1] == 10 || chesstable[f_0.chess_x][f_0.chess_y + 1] == 11 || chesstable[f_0.chess_x][f_0.chess_y + 1] == 12 || chesstable[f_0.chess_x][f_0.chess_y + 1] == 13 || chesstable[f_0.chess_x][f_0.chess_y + 1] == 14 || chesstable[f_0.chess_x][f_0.chess_y + 1] == 15)   //將軍前面有敵人
 	{
-		if (horsetrapx == 0 && horsetrapy == 0 && 2 < f_0.chess_x && f_0.chess_x < 6 && 0 < f_0.chess_y && f_0.chess_y < 3)
+		if (horsetrapx == 0 && horsetrapy == 0)
 		{
 			ofstream outfile;
 			outfile.open("play.txt");
@@ -1869,7 +1869,7 @@ int f_0_defend(int chesstable[x][y], tablechess)
 	}
 	if (chesstable[f_0.chess_x - 1][f_0.chess_y] == 5 || chesstable[f_0.chess_x - 1][f_0.chess_y] == 6 || chesstable[f_0.chess_x - 1][f_0.chess_y] == 7 || chesstable[f_0.chess_x - 1][f_0.chess_y] == 8 || chesstable[f_0.chess_x - 1][f_0.chess_y] == 9 || chesstable[f_0.chess_x - 1][f_0.chess_y] == 10 || chesstable[f_0.chess_x - 1][f_0.chess_y] == 11 || chesstable[f_0.chess_x - 1][f_0.chess_y] == 12 || chesstable[f_0.chess_x - 1][f_0.chess_y] == 13 || chesstable[f_0.chess_x - 1][f_0.chess_y] == 14 || chesstable[f_0.chess_x - 1][f_0.chess_y] == 15)   //將軍前面有敵人
 	{
-		if (horsetrapx == 0 && horsetrapy == 0 && 2 < f_0.chess_x && f_0.chess_x < 6 && 0 < f_0.chess_y && f_0.chess_y < 3)
+		if (horsetrapx == 0 && horsetrapy == 0)
 		{
 			ofstream outfile;
 			outfile.open("play.txt");
@@ -1904,7 +1904,7 @@ int f_0_defend(int chesstable[x][y], tablechess)
 	}
 	if (chesstable[f_0.chess_x + 1][f_0.chess_y] == 5 || chesstable[f_0.chess_x + 1][f_0.chess_y] == 6 || chesstable[f_0.chess_x + 1][f_0.chess_y] == 7 || chesstable[f_0.chess_x + 1][f_0.chess_y] == 8 || chesstable[f_0.chess_x + 1][f_0.chess_y] == 9 || chesstable[f_0.chess_x + 1][f_0.chess_y] == 10 || chesstable[f_0.chess_x + 1][f_0.chess_y] == 11 || chesstable[f_0.chess_x + 1][f_0.chess_y] == 12 || chesstable[f_0.chess_x + 1][f_0.chess_y] == 13 || chesstable[f_0.chess_x + 1][f_0.chess_y] == 14 || chesstable[f_0.chess_x + 1][f_0.chess_y] == 15)   //將軍前面有敵人
 	{
-		if (horsetrapx == 0 && horsetrapy == 0 && 2 < f_0.chess_x && f_0.chess_x < 6 && 0 < f_0.chess_y && f_0.chess_y < 3)
+		if (horsetrapx == 0 && horsetrapy == 0)
 		{
 			ofstream outfile;
 			outfile.open("play.txt");
@@ -2965,14 +2965,6 @@ int s_113_attack(int chesstable[x][y], tablechess)
 	}
 	return 0;
 }
-//不要刪我
-
-
-
-
-
-
-
 int s_109_attack(int chesstable[x][y], tablechess)
 {
 	s_109.chess = 0;
@@ -3238,9 +3230,9 @@ int s_100_defend(int chesstable[x][y], tablechess)
 		{
 			if (chesstable[j][i] == 100)
 			{
-				f_0.chess = chesstable[j][i];
-				f_0.chess_x = j;
-				f_0.chess_y = i;
+				s_100.chess = chesstable[j][i];
+				s_100.chess_x = j;
+				s_100.chess_y = i;
 			}
 		}
 	}
@@ -3402,12 +3394,20 @@ int s_100_defend(int chesstable[x][y], tablechess)
 		{
 			horsetrapy = 1;            //代表有陷阱
 		}
+		else if (chesstable[s_100.chess_x][i] != -1)
+		{
+			horsetrapy = 0;
+		}
 	}
 	for (int i = s_100.chess_x; i >= 0; i--)
 	{
 		if (chesstable[i][s_100.chess_y - 1] == 5 || chesstable[i][s_100.chess_y - 1] == 6)
 		{
 			horsetrapx = 1;
+		}
+		else if (chesstable[i][s_100.chess_y - 1] != -1)
+		{
+			horsetrapx = 0;
 		}
 	}
 	for (int i = s_100.chess_x; i < x; i++)
@@ -3416,10 +3416,14 @@ int s_100_defend(int chesstable[x][y], tablechess)
 		{
 			horsetrapx = 1;
 		}
+		else if (chesstable[i][s_100.chess_y - 1] != -1)
+		{
+			horsetrapx = 0;
+		}
 	}
 	if (chesstable[s_100.chess_x][s_100.chess_y - 1] == 5 || chesstable[s_100.chess_x][s_100.chess_y - 1] == 6 || chesstable[s_100.chess_x][s_100.chess_y - 1] == 7 || chesstable[s_100.chess_x][s_100.chess_y - 1] == 8 || chesstable[s_100.chess_x][s_100.chess_y - 1] == 9 || chesstable[s_100.chess_x][s_100.chess_y - 1] == 10 || chesstable[s_100.chess_x][s_100.chess_y - 1] == 11 || chesstable[s_100.chess_x][s_100.chess_y - 1] == 12 || chesstable[s_100.chess_x][s_100.chess_y - 1] == 13 || chesstable[s_100.chess_x][s_100.chess_y - 1] == 14 || chesstable[s_100.chess_x][s_100.chess_y - 1] == 15)   //將軍前面有敵人
 	{
-		if (horsetrapx == 0 && horsetrapy == 0 && 2 < s_100.chess_x && s_100.chess_x < 6 && 6 < s_100.chess_y && s_100.chess_y < 10)
+		if (horsetrapx == 0 && horsetrapy == 0)
 		{
 			ofstream outfile;
 			outfile.open("play.txt");
@@ -3460,6 +3464,10 @@ int s_100_defend(int chesstable[x][y], tablechess)
 		{
 			horsetrapy = 1;
 		}
+		else if (chesstable[s_100.chess_x - 1][i] != -1)
+		{
+			horsetrapy = 0;
+		}
 	}
 	for (int i = s_100.chess_x - 2; i >= 0; i--)
 	{
@@ -3467,10 +3475,14 @@ int s_100_defend(int chesstable[x][y], tablechess)
 		{
 			horsetrapx = 1;
 		}
+		else if (chesstable[i][s_100.chess_y] != -1)
+		{
+			horsetrapx = 0;
+		}
 	}
 	if (chesstable[s_100.chess_x - 1][s_100.chess_y] == 5 || chesstable[s_100.chess_x - 1][s_100.chess_y] == 6 || chesstable[s_100.chess_x - 1][s_100.chess_y] == 7 || chesstable[s_100.chess_x - 1][s_100.chess_y] == 8 || chesstable[s_100.chess_x - 1][s_100.chess_y] == 9 || chesstable[s_100.chess_x - 1][s_100.chess_y] == 10 || chesstable[s_100.chess_x - 1][s_100.chess_y] == 11 || chesstable[s_100.chess_x - 1][s_100.chess_y] == 12 || chesstable[s_100.chess_x - 1][s_100.chess_y] == 13 || chesstable[s_100.chess_x - 1][s_100.chess_y] == 14 || chesstable[s_100.chess_x - 1][s_100.chess_y] == 15)   //將軍前面有敵人
 	{
-		if (horsetrapx == 0 && horsetrapy == 0 && 2 < s_100.chess_x && s_100.chess_x < 6 && 6 < s_100.chess_y && s_100.chess_y < 10)
+		if (horsetrapx == 0 && horsetrapy == 0)
 		{
 			ofstream outfile;
 			outfile.open("play.txt");
@@ -3495,6 +3507,10 @@ int s_100_defend(int chesstable[x][y], tablechess)
 		{
 			horsetrapy = 1;
 		}
+		else if (chesstable[s_100.chess_x + 1][i] != -1)
+		{
+			horsetrapy = 0;
+		}
 	}
 	for (int i = s_100.chess_x + 2; i < x; i++)
 	{
@@ -3502,10 +3518,14 @@ int s_100_defend(int chesstable[x][y], tablechess)
 		{
 			horsetrapx = 1;
 		}
+		else if (chesstable[i][s_100.chess_y] != -1)
+		{
+			horsetrapx = 0;
+		}
 	}
 	if (chesstable[s_100.chess_x + 1][s_100.chess_y] == 5 || chesstable[s_100.chess_x + 1][s_100.chess_y] == 6 || chesstable[s_100.chess_x + 1][s_100.chess_y] == 7 || chesstable[s_100.chess_x + 1][s_100.chess_y] == 8 || chesstable[s_100.chess_x + 1][s_100.chess_y] == 9 || chesstable[s_100.chess_x + 1][s_100.chess_y] == 10 || chesstable[s_100.chess_x + 1][s_100.chess_y] == 11 || chesstable[s_100.chess_x + 1][s_100.chess_y] == 12 || chesstable[s_100.chess_x + 1][s_100.chess_y] == 13 || chesstable[s_100.chess_x + 1][s_100.chess_y] == 14 || chesstable[s_100.chess_x + 1][s_100.chess_y] == 15)   //將軍前面有敵人
 	{
-		if (horsetrapx == 0 && horsetrapy == 0 && 2 < s_100.chess_x && s_100.chess_x < 6 && 6 < s_100.chess_y && s_100.chess_y < 10)
+		if (horsetrapx == 0 && horsetrapy == 0)
 		{
 			ofstream outfile;
 			outfile.open("play.txt");
